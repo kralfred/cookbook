@@ -1,0 +1,65 @@
+﻿@using CookBook.Common.Models.Recipe
+@page "/recipes"
+<h3>Recipes Page</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ingredient in recipes)
+        {
+            <tr>
+                <td>@ingredient.Name</td>
+                <td>@ingredient.Description</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(ingredient.ImageUrl))
+                    {
+                        <img src="@ingredient.ImageUrl" alt="@ingredient.Name" width="50" />
+                    }
+                    else {
+                        <img src="no_image.jpg" alt="@ingredient.Name" width="30" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@code {
+    private List<RecipeDetailModel> recipes = new()
+    {
+        new RecipeDetailModel
+        {
+            Id = Guid.NewGuid(),
+            Name = "Soup",
+            Description = "A simple food made by boidling ingredients.",
+            Duration = null,
+            ImageUrl = null
+        },
+        new RecipeDetailModel
+        {
+            Id = Guid.NewGuid(),
+            Name = "Bread",
+            Description = "Dough baked in a oven.",
+            Duration = null,
+            ImageUrl = "Recipe_Images/cake.jpg"
+        },
+        new RecipeDetailModel
+        {
+            Id = Guid.NewGuid(),
+            Name = "Cake",
+            Description = "Sweat dezzert.",
+            Duration = null,
+            ImageUrl = "https://via.placeholder.com/100"
+        }
+    };
+
+
+
+
+}

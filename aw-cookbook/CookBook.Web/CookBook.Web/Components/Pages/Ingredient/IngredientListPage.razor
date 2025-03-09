@@ -1,0 +1,37 @@
+﻿@page "/ingredients"
+@using CookBook.Common.Models.Ingredient
+@using CookBook.Web.Api
+
+
+
+<h3>Ingredient List</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ingredient in ingredients)
+        {
+            <tr>
+                <td>@ingredient.Name</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(ingredient.ImageUrl))
+                    {
+                        <img src="@ingredient.ImageUrl" alt="@ingredient.Name" width="50" />
+                    }
+                </td>
+                <td>
+                    <NavLink href="@($"/modify/ingredient/{ingredient.Id}")">Modify</NavLink>
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>

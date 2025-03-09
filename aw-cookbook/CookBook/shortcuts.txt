@@ -1,0 +1,14 @@
+shift + f2       = new class
+ctrl + k + e
+ctrl + .         = format namespace
+ctor             = new constructor
+ctrl + shift + b = build
+
+
+
+
+
+Database commands
+
+-dotnet ef migrations add comment 
+-dotnet ef database update
